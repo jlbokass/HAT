@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Show a story{% endblock %}
+
+{% block body %}
+
+    <div class="example-wrapper">
+        <h1>{{ story.title }}</h1>
+        <p>{{ story.content }}</p>
+        <p><a href="{{ path('home_story') }}">Retour à la liste des histoires</a></p>
+    </div>
+{% endblock %}

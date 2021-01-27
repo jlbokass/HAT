@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add a story{% endblock %}
+
+{% block body %}
+
+    <div class="example-wrapper">
+        <h1>Add a story</h1>
+        {{ form_start(storyForm) }}
+
+            {{ form_label(storyForm.title) }}
+            {{ form_widget(storyForm.title) }}
+
+            {{ form_label(storyForm.content) }}
+            {{ form_widget(storyForm.content) }}
+
+            {{ form_label(storyForm.createdAt) }}
+            {{ form_widget(storyForm.createdAt) }}
+
+        {{ form_end(storyForm) }}
+    </div>
+{% endblock %}
