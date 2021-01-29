@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class StoryController extends AbstractController
 {
@@ -30,15 +31,30 @@ class StoryController extends AbstractController
 
     /**
      * @Route("/story/add", name="add_story")
-     * <p> Add a Story
      *
      * @param EntityManagerInterface $manager
+     * @param Request $request
      *
      * @return Response
      */
-    public function add(EntityManagerInterface $manager): Response
+    public function add(EntityManagerInterface $manager, Request $request): Response
     {
         $storyForm = $this->createForm(StoryType::class);
+        $storyForm->handleRequest($request);
+
+        if ($storyForm->isSubmitted() && $storyForm->isValid()) {
+            $story = $storyForm->getData();
+
+            $manager->persist($story);
+            $manager->flush();
+
+            $this->addFlash(
+                "success",
+                "L'histoire à bien été cré"
+            );
+
+            return $this->redirectToRoute('home_story');
+        }
 
         return $this->render('story/add.html.twig', [
             'storyForm' => $storyForm->createView()
