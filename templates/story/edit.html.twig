@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifié une histoire{% endblock %}
+
+{% block body %}
+
+    <div class="example-wrapper">
+        <h1>Modifer votre histoire</h1>
+
+        {% include 'story/story_form.html.twig' %}
+        <button type="submit" name="action">Editer</button>
+        {{ form_end(storyForm) }}
+    </div>
+{% endblock %}

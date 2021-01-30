@@ -1,0 +1,11 @@
+{{ form_start(storyForm) }}
+
+        {{ form_label(storyForm.title) }}
+        {{ form_widget(storyForm.title) }}
+        {{ form_errors(storyForm.title) }}
+
+        {{ form_label(storyForm.content) }}
+        {{ form_widget(storyForm.content) }}
+        {{ form_errors(storyForm.content) }}
+
+        {{ form_row(storyForm.image) }}

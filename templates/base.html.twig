@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        {% endblock %}
 
         {% block javascripts %}{% endblock %}
     </head>
@@ -11,7 +13,7 @@
     {# read and display all flash messages #}
     {% for label, messages in app.flashes %}
         {% for message in messages %}
-            <div class="flash-{{ label }}">
+            <div class="flash-{{ label }}" style="width: 100%; height: 65px; background-color: #5eb5e0">
                 {{ message }}
             </div>
         {% endfor %}

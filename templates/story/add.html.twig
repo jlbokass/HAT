@@ -5,18 +5,11 @@
 {% block body %}
 
     <div class="example-wrapper">
-        <h1>Add a story</h1>
-        {{ form_start(storyForm) }}
+        <h1>Ajouter une histoire</h1>
 
-            {{ form_label(storyForm.title) }}
-            {{ form_widget(storyForm.title) }}
+        {% include 'story/story_form.html.twig' %}
 
-            {{ form_label(storyForm.content) }}
-            {{ form_widget(storyForm.content) }}
-
-            {{ form_label(storyForm.createdAt) }}
-            {{ form_widget(storyForm.createdAt) }}
-            <button type="submit" name="action">Submit</button>
+        <button type="submit" name="action">Partager mon histoire</button>
         {{ form_end(storyForm) }}
     </div>
 {% endblock %}

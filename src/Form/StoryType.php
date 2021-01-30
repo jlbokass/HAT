@@ -22,8 +22,8 @@ class StoryType extends AbstractType
             ->add('content', TextareaType::class, [
                 'required'=> false,
             ])
-            ->add('createdAt', DateTimeType::class, [
-                'required' => false
+            ->add('image', ImageType::class, [
+                'label' => false
             ])
         ;
     }
