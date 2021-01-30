@@ -6,12 +6,16 @@
 
 <div class="example-wrapper">
     <h1>Liste des histoires</h1>
+    <div>
+        <a href="{{ path('add_story') }}">Ajouter une histoire</a>
+    </div>
     {% if stories %}
         {% for story in stories %}
             <div>
                 <h3><a href="{{ path('story_show', {'id' : story.id}) }}">{{ story.title }}</a></h3>
                 <p>{{ story.content }}</p>
                 <p>Publié le {{ story.createdAt| date("j F \\à G\\h\\:i\\m\\n", "Europe/Paris") }}</p>
+                <p><a href="{{ path('edit_story', {'id': story.id}) }}">Modifier l'histoire</a></p>
             </div>
         {% endfor %}
         {% else %}

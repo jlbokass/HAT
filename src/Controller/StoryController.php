@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Image;
 use App\Entity\Story;
 use App\Form\StoryType;
 use App\Repository\StoryRepository;
@@ -43,7 +44,27 @@ class StoryController extends AbstractController
         $storyForm->handleRequest($request);
 
         if ($storyForm->isSubmitted() && $storyForm->isValid()) {
+
+            $path = $this->getParameter('kernel.project_dir') . '/public/images';
+
+            // Get form values from story form
             $story = $storyForm->getData();
+
+            /**
+             * @var Image $image
+             * get the image
+             */
+            $image = $story->getImage();
+
+            // get the image sends by user
+            $file = $image->getFile();
+
+            // create an unique name for the file
+            $name = md5(uniqid('', true)) . '.' . $file->guessExtension();
+
+            // move the file
+            $file->move($path, $name);
+            $image->setName($name);
 
             $manager->persist($story);
             $manager->flush();
@@ -64,20 +85,34 @@ class StoryController extends AbstractController
     /**
      * @Route("/story/edit/{id}", name="edit_story", requirements={"id"="\d+"})
      *
+     * @param Request $request
      * @param Story $story
      * @param EntityManagerInterface $manager
      *
      * @return Response
      */
-    public function edit(Story $story, EntityManagerInterface $manager): Response
+    public function edit(Request $request, Story $story, EntityManagerInterface $manager): Response
     {
-        $story->setTitle('An edit story');
-        $story->setContent('This is a content for an edit story');
+        $storyForm = $this->createForm(StoryType::class, $story);
+        $storyForm->handleRequest($request);
 
-        $manager->flush();
+        if ($storyForm->isSubmitted() && $storyForm->isValid()) {
 
-        return $this->render('story/show.html.twig', [
-            'story' => $story
+            $story = $storyForm->getData();
+
+            $manager->flush();
+
+            $this->addFlash(
+                "success",
+                "L'histoire à bien été modifé"
+            );
+
+            return $this->redirectToRoute('home_story');
+        }
+
+        return $this->render('story/edit.html.twig', [
+            'story' => $story,
+            'storyForm' => $storyForm->createView()
         ]);
     }
 
