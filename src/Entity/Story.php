@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\StoryRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass=StoryRepository::class)
@@ -18,19 +20,27 @@ class Story
     private $id;
 
     /**
+     * @Assert\NotBlank(message="le titre est obligatoire")
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
+     * @Assert\NotBlank(message="le descriptif est obligatoire")
      * @ORM\Column(type="text")
      */
     private $content;
 
     /**
+     * @Assert\NotBlank(message="la date est obligatoire")
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+    public function __construct()
+    {
+        $this->createdAt = new DateTime('now');
+    }
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
