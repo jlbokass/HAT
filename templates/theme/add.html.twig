@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Ajoutez un thème
+{% endblock %}
+
+{% block body %}
+
+    <div class="example-wrapper">
+        <h1>ajoutez un theme</h1>
+        {% include 'theme/theme_form.html.twig' %}
+
+            <button class="mt-3 btn btn-success" type="submit" name="action">Créez un theme</button>
+            {% include 'theme/btn_hom.html.twig' %}
+
+        {{ form_end(themeForm) }}
+
+    </div>
+
+{% endblock %}
+
+
+
