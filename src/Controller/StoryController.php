@@ -6,6 +6,7 @@ use App\Entity\Image;
 use App\Entity\Story;
 use App\Form\StoryType;
 use App\Repository\StoryRepository;
+use App\Repository\ThemeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,15 +19,31 @@ class StoryController extends AbstractController
      * @Route("/story", name="home_story")
      *
      * @param StoryRepository $storyRepository
-     *
+     * @param ThemeRepository $themeRepository
      * @return Response
      */
-    public function index(StoryRepository $storyRepository): Response
+    public function index(StoryRepository $storyRepository, ThemeRepository $themeRepository): Response
     {
         $stories = $storyRepository->findAll();
+        $themes = $themeRepository->findAll();
 
         return $this->render('story/index.html.twig', [
             'stories' => $stories,
+            'themes' => $themes,
+        ]);
+    }
+
+    /**
+     * @Route("/story/show/{id}", name="show_story", requirements={"id"="\d+"})
+     *
+     * @param Story $story
+     *
+     * @return Response
+     */
+    public function show(Story $story): Response
+    {
+        return $this->render('story/show.html.twig', [
+            'story' => $story
         ]);
     }
 
@@ -43,8 +60,8 @@ class StoryController extends AbstractController
         $storyForm = $this->createForm(StoryType::class);
         $storyForm->handleRequest($request);
 
-        if ($storyForm->isSubmitted() && $storyForm->isValid()) {
-
+        if ($storyForm->isSubmitted() && $storyForm->isValid())
+        {
             $path = $this->getParameter('kernel.project_dir') . '/public/images';
 
             // Get form values from story form
@@ -96,12 +113,10 @@ class StoryController extends AbstractController
         $storyForm = $this->createForm(StoryType::class, $story);
         $storyForm->handleRequest($request);
 
-        if ($storyForm->isSubmitted() && $storyForm->isValid()) {
-
+        if ($storyForm->isSubmitted() && $storyForm->isValid())
+        {
             $story = $storyForm->getData();
-
             $manager->flush();
-
             $this->addFlash(
                 "success",
                 "L'histoire à bien été modifé"
@@ -132,17 +147,4 @@ class StoryController extends AbstractController
         return $this->redirectToRoute('home_story');
     }
 
-    /**
-     * @Route("/story/show/{id}", name="story_show", requirements={"id"="\d+"})
-     *
-     * @param Story $story
-     *
-     * @return Response
-     */
-    public function show(Story $story): Response
-    {
-        return $this->render('story/show.html.twig', [
-            'story' => $story
-        ]);
-    }
 }

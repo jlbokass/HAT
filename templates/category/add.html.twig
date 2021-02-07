@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Ajoutez une catégorie
+{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper">
+        <h1>Ajouter une catégorie</h1>
+
+        {{ form_start(categoryForm) }}
+
+            {{ form_label(categoryForm.name) }}
+            {{ form_widget(categoryForm.name) }}
+            {{ form_errors(categoryForm.name) }}
+
+            {{ form_label(categoryForm.description) }}
+            {{ form_widget(categoryForm.description) }}
+            {{ form_errors(categoryForm.description) }}
+
+        <button type="submit" name="action">Ajoutez une catégorie</button>
+        {{ form_end(categoryForm) }}
+    </div>
+{% endblock %}
+
+

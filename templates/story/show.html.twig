@@ -7,11 +7,11 @@
     <div class="example-wrapper">
         <h1>{{ story.title }}</h1>
         <p>{{ story.content }}</p>
+        {% if story.image.name is defined %}
         <div class="storyPicture">
-            {% if story.image.name is defined %}
                 <img src="{{ asset('images/')~story.image.name }}" alt="">
-            {% endif %}
         </div>
+        {% endif %}
         <p><a href="{{ path('home_story') }}">Retour à la liste des histoires</a></p>
     </div>
 {% endblock %}

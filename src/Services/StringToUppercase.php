@@ -12,6 +12,6 @@ class StringToUppercase
      */
     public function stringToUppercase(string $string): string
     {
-        return strtoupper($string);
+        return mb_strtoupper($string);
     }
 }

@@ -8,6 +8,10 @@
 /public/bundles/
 /var/
 /vendor/
+ src/Repository/TokenRepository.php
+ src/Form/CategoryType.php
+ src/Controller/CategoryController.php
+ templates/category/
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###

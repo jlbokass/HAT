@@ -2,24 +2,121 @@
 
 {% block title %}Les histoires{% endblock %}
 
-{% block body %}
+{% block pageTitle %} Les histoires {% endblock %}
+{% block subtitle %}Partagez vos expériences, savoir faire et savoir être pour l'enrichissement du patrimoine immatériel commun.{% endblock %}
 
-<div class="example-wrapper">
-    <h1>Liste des histoires</h1>
-    <div>
-        <a href="{{ path('add_story') }}">Ajouter une histoire</a>
+{% block searchbox %}
+     <form>
+         <div class="form-row">
+             <div class="col-md-6">
+                 <input type="text" class="form-control rounded-pill shadow">
+             </div>
+             <div class="col-md-2">
+                 <input type="submit" class="form-control rounded-pill shadow" value="Recheche">
+             </div>
+             <div class="col-md-4">
+                 <a class="btn btn-dark-blue btn-block rounded-pill" href="{{ path('add_story') }}">Écrire mon histoire</a>
+             </div>
+         </div>
+         <div class="mt-4">
+             <div class="row">
+                 {% if themes %}
+                    {% for theme in themes %}
+                        <div class="col-md-2"><button class="btn btn-block rounded-pill shadow">{{ theme.name }}</button></div>
+                    {% endfor %}
+                 {% endif %}
+             </div>
+         </div>
+     </form>
+ {% endblock %}
+
+{% block body %}
+    {% if stories %}
+        {% for story in stories %}
+            <div class="article-container">
+                {% if story.themes %}
+                    {% for theme in story.themes %}
+                        <div class="category-name text-right mb-4">#{{theme.name}}</div>
+                    {% endfor %}
+                {% endif %}
+                {% if story.image.name is defined %}
+                    <div class="story-image">
+                        <img src="{{ asset('images/')~story.image.name }}" alt="">
+                    </div>
+                {% endif %}
+
+                <div class="row">
+                    <div class="col-6">
+                        <h3 class="mt-4">{{ story.title }}</h3>
+                    </div>
+                    <div class="col-6">
+                        <p class="text-right mt-4">Publié le {{ story.createdAt| date("j F \\à G\\h\\:i", "Europe/Paris") }}</p>
+                    </div>
+                </div>
+                <div>
+                    <p>{{ story.content }}</p>
+                </div>
+                <div class="mt-5">
+                    <button class="btn rounded-pill shadow mr-4" style="width: 200px"><i class="fas fa-star"></i> ajoutez aux favoris</button>
+                    <button class="btn rounded-pill shadow" style="width: 200px"><i class="fas fa-star"></i> Remercier</button>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h3>Pas d'histoire</h3>
+    {% endif %}
+{% endblock %}
+{#<div class="container">
+    <h1>Les dernières histoires</h1>
+    <p class="mb-5">Partagez vos expériences, savoir faire et savoir être pour l'enrichissement du patrimoine immatériel commun.</p>
+    <div class="search-box">
+        <form>
+            <div class="form-row">
+                <div class="col-md-6">
+                    <input type="text" class="form-control rounded-pill shadow">
+                </div>
+                <div class="col-md-2">
+                    <input type="submit" class="form-control rounded-pill shadow" value="Recheche">
+                </div>
+                <div class="col-md-4">
+                    <a class="btn btn-dark-blue btn-block rounded-pill" href="{{ path('add_story') }}">Écrire mon histoire</a>
+                </div>
+            </div>
+            <div class="search-box mt-4">
+                <button class="btn rounded-pill shadow"><i class="fas fa-star"></i></button>
+                <button class="btn rounded-pill shadow">expérince</button>
+            </div>
+        </form>
     </div>
     {% if stories %}
         {% for story in stories %}
-            <div>
-                <h3><a href="{{ path('story_show', {'id' : story.id}) }}">{{ story.title }}</a></h3>
-                <p>{{ story.content }}</p>
-                <p>Publié le {{ story.createdAt| date("j F \\à G\\h\\:i\\m\\n", "Europe/Paris") }}</p>
-                <p><a href="{{ path('edit_story', {'id': story.id}) }}">Modifier l'histoire</a></p>
+            <div class="article-container">
+                <div class="category-name text-right mb-4">#Expéricence</div>
+                {% if story.image.name is defined %}
+                    <div class="story-image">
+                        <img src="{{ asset('images/')~story.image.name }}" alt="">
+                    </div>
+                {% endif %}
+
+                <div class="row">
+                    <div class="col-6">
+                        <h3 class="mt-4">{{ story.title }}</h3>
+                    </div>
+                    <div class="col-6">
+                        <p class="text-right mt-4">Publié le {{ story.createdAt| date("j F \\à G\\h\\:i", "Europe/Paris") }}</p>
+                    </div>
+                </div>
+                <div>
+                    <p>{{ story.content }}</p>
+                </div>
+                <div class="mt-5">
+                    <button class="btn rounded-pill shadow mr-4" style="width: 200px"><i class="fas fa-star"></i> ajoutez aux favoris</button>
+                    <button class="btn rounded-pill shadow" style="width: 200px"><i class="fas fa-star"></i> Remercier</button>
+                </div>
             </div>
         {% endfor %}
         {% else %}
         <h3>Pas d'histoire</h3>
     {% endif %}
-</div>
-{% endblock %}
+</div>#}
+

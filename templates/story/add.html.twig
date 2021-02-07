@@ -4,12 +4,18 @@
 
 {% block body %}
 
-    <div class="example-wrapper">
-        <h1>Ajouter une histoire</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"><button class="btn btn-block rounded-pill shadow">Nouvelle histoire</button></div>
+            <div class="col-md-4"><button class="btn btn-block rounded-pill shadow">Brouillon</button></div>
+            <div class="col-md-4"><button class="btn btn-block rounded-pill shadow">Histoires publiés</button></div>
+        </div>
 
-        {% include 'story/story_form.html.twig' %}
+        <div class="article-container">
+            {% include 'story/story_form.html.twig' %}
 
-        <button type="submit" name="action">Partager mon histoire</button>
-        {{ form_end(storyForm) }}
+            <button type="submit" name="action">Partager mon histoire</button>
+            {{ form_end(storyForm) }}
+        </div>
     </div>
 {% endblock %}
