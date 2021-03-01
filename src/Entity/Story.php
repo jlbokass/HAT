@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\StoryRepository;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
 use phpDocumentor\Reflection\Types\Boolean;
@@ -62,6 +63,21 @@ class Story
      */
     private  $themes;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $published;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
     public function __construct()
     {
         $this->createdAt = new DateTime('now');
@@ -87,15 +103,6 @@ class Story
     }
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    private $createdAt;
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $published;
-
-    /**
      * @return bool
      */
     public function getPublished(): Boolean
@@ -110,11 +117,6 @@ class Story
     {
         $this->published = $published;
     }
-
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -169,8 +171,10 @@ class Story
         return $this;
     }
 
-
-    public function getThemes()
+    /**
+     * @return Collection
+     */
+    public function getThemes(): Collection
     {
         return $this->themes;
     }
@@ -216,4 +220,5 @@ class Story
     {
         $this->categories->removeElement($category);
     }
+
 }

@@ -16,13 +16,18 @@ class StoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class )
-            ->add('content', TextareaType::class )
+            ->add('title', TextType::class, [
+                'label' => false,
+            ] )
+            ->add('content', TextareaType::class, [
+                'label' => false
+            ] )
             ->add('themes', EntityType::class, [
+                'label' => 'choisissez un thème:',
                 'class' => Theme::class,
                 'choice_label' => 'name',
-                //'multiple' => true,
-               // 'expanded' => false
+                'multiple' => true,
+               'expanded' => false
             ])
             ->add('image', ImageType::class, [
                 'label' => false

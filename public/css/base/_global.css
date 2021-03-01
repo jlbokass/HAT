@@ -1,0 +1,15 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--main-lightGrey-color);
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-size: 22px;
+    color: var(--main-darkBlue-color);
+}
+
+button {
+    outline: none;
+}

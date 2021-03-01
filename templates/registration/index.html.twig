@@ -6,23 +6,39 @@
 
 {% block body %}
 
-    <div class="example-wrapper">
-        <h1>S'enregistrer</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            {% include 'partials/article-on-login-page.html.twig' %}
+        </div>
+        <div class="col-md-6">
+            <h1>S'inscrire</h1>
 
-        {{ form_start(registrationUserForm) }}
+            {{ form_start(registrationUserForm) }}
 
-        {{ form_label(registrationUserForm.email) }}
-        {{ form_widget(registrationUserForm.email) }}
-        {{ form_errors(registrationUserForm.email) }}
+            {{ form_label(registrationUserForm.firstname) }}
+            {{ form_widget(registrationUserForm.firstname) }}
+            {{ form_errors(registrationUserForm.firstname) }}
 
-        {{ form_label(registrationUserForm.password) }}
-        {{ form_widget(registrationUserForm.password) }}
-        {{ form_errors(registrationUserForm.password) }}
+            {{ form_label(registrationUserForm.lastname) }}
+            {{ form_widget(registrationUserForm.lastname) }}
+            {{ form_errors(registrationUserForm.lastname) }}
 
-        <button type="submit" name="action">S'enregistrer</button>
+            {{ form_label(registrationUserForm.email) }}
+            {{ form_widget(registrationUserForm.email) }}
+            {{ form_errors(registrationUserForm.email) }}
 
-        {{ form_end(registrationUserForm) }}
+            {{ form_label(registrationUserForm.password) }}
+            {{ form_widget(registrationUserForm.password) }}
+            {{ form_errors(registrationUserForm.password) }}
 
+            <div class="text-center">
+                <button class="btn bgRed textWhite px-5 rounded-pill" type="submit" name="action">S'INSCRIRE</button>
+            </div>
+
+            <p class="mt-4 textSmall text-center">Vous avez déjà un compte? <a href="{{ path('app_login') }}" class="href_login">Se connecter</a></p>
+
+            {{ form_end(registrationUserForm) }}
+        </div>
     </div>
 
 {% endblock %}

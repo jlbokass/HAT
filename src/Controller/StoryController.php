@@ -24,7 +24,7 @@ class StoryController extends AbstractController
      */
     public function index(StoryRepository $storyRepository, ThemeRepository $themeRepository): Response
     {
-        $stories = $storyRepository->findAll();
+        $stories = $storyRepository->findAllOrderedByNewest();
         $themes = $themeRepository->findAll();
 
         return $this->render('story/index.html.twig', [

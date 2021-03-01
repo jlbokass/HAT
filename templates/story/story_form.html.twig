@@ -1,13 +1,48 @@
 {{ form_start(storyForm, {'attr': {'novalidate': 'novalidate'}}) }}
 
-        {{ form_label(storyForm.title) }}
-        {{ form_widget(storyForm.title) }}
-        {{ form_errors(storyForm.title) }}
+        <div class="mb-4 input-group-lg">
+                {{ form_widget(storyForm.title, {'attr':
+                    {
+                        'placeholder' : 'Entrez le titre',
+                        'class' : 'rounded-pill shadow'
+                    }
+                }) }}
+                {{ form_errors(storyForm.title) }}
+        </div>
 
-        {{ form_label(storyForm.content) }}
-        {{ form_widget(storyForm.content) }}
-        {{ form_errors(storyForm.content) }}
+        <div class="mb-4">
+                {{ form_widget(storyForm.content, {'attr':
+                    {
+                        'rows' : '10', 'placeholder' : 'Ecrivez votre histoire...',
+                        'class' : 'rounded shadow'
+                    }
+                }) }}
+                {{ form_errors(storyForm.content) }}
+        </div>
 
-        {{ form_row(storyForm.themes) }}
+       <div class="mb-4">
+                {{ form_row(storyForm.themes) }}
+                {{ form_errors(storyForm.themes) }}
+        </div>
 
-        {{ form_row(storyForm.image) }}
+        <div class="file-upload">
+
+            <div class="image-upload-wrap">
+                <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+                <div class="drag-text">
+                    <h3>Drag and drop a file or select add Image</h3>
+                </div>
+            </div>
+            <div class="file-upload-content">
+                <img class="file-upload-image" src="#" alt="your image" />
+                <div class="image-title-wrap">
+                    <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-4">
+                {{ form_widget(storyForm.image) }}
+                {{ form_errors(storyForm.image) }}
+            <small id="emailHelp" class="form-text text-muted">Les formats acceptés sont jpg, jpeg, png, mp4, avi. La taille maximale est de 2Mo.</small>
+        </div>

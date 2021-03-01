@@ -2,7 +2,7 @@
 
 {% block title %}Les histoires{% endblock %}
 
-{% block pageTitle %} Les histoires {% endblock %}
+{% block pageTitle %} Les dernières histoires {% endblock %}
 {% block subtitle %}Partagez vos expériences, savoir faire et savoir être pour l'enrichissement du patrimoine immatériel commun.{% endblock %}
 
 {% block searchbox %}
@@ -15,7 +15,7 @@
                  <input type="submit" class="form-control rounded-pill shadow" value="Recheche">
              </div>
              <div class="col-md-4">
-                 <a class="btn btn-dark-blue btn-block rounded-pill" href="{{ path('add_story') }}">Écrire mon histoire</a>
+                 <a class="btn btnDarkBlue btn-block rounded-pill" href="{{ path('add_story') }}">Écrire mon histoire</a>
              </div>
          </div>
          <div class="mt-4">
@@ -36,7 +36,7 @@
             <div class="article-container">
                 {% if story.themes %}
                     {% for theme in story.themes %}
-                        <div class="category-name text-right mb-4">#{{theme.name}}</div>
+                        <div class="category-name text-right mb-4 textDarkBlue">#{{theme.name}}</div>
                     {% endfor %}
                 {% endif %}
                 {% if story.image.name is defined %}
@@ -50,7 +50,7 @@
                         <h3 class="mt-4">{{ story.title }}</h3>
                     </div>
                     <div class="col-6">
-                        <p class="text-right mt-4">Publié le {{ story.createdAt| date("j F \\à G\\h\\:i", "Europe/Paris") }}</p>
+                        <p class="text-right mt-4">Publié le {{ story.createdAt| format_datetime('full', 'short', locale='fr') }}</p>
                     </div>
                 </div>
                 <div>

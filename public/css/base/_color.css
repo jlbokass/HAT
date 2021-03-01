@@ -1,0 +1,53 @@
+:root {
+    --main-red-color : rgb(202, 4, 44);
+    --main-darkBlue-color : rgb(46, 56, 77);
+    --main-lightGrey-color : rgb(140, 152, 169);
+    --main-blueOcean-color : rgb(84, 216, 255);
+    --main-purple-color : rgb(163, 161, 251);
+}
+
+/* BG COLOR */
+.bgDark-blue {
+    background-color: var(--main-darkBlue-color);
+}
+
+.bgRed {
+    background-color: var(--main-red-color);
+}
+
+.bgBlueOcean {
+    background-color: var(--main-blueOcean-color);
+}
+
+.bgPurple {
+    background-color: var(--main-purple-color);
+}
+
+.bgLightGrey {
+    background-color: var(--main-lightGrey-color);
+}
+
+/* TEXT COLOR */
+.textDarkBlue {
+    color: var(--main-darkBlue-color);
+}
+
+.textRed {
+    color: var(--main-red-color);
+}
+
+.textBlueOcean {
+    color: var(--main-blueOcean-color);
+}
+
+.textPurple {
+    color: var(--main-purple-color);
+}
+
+.textLightGrey {
+    color: var(--main-lightGrey-color);
+}
+
+.textWhite {
+    color: #FFF;
+}
