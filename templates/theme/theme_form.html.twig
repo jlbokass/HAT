@@ -1,0 +1,9 @@
+{{ form_start(themeForm,  {'attr': {'novalidate': 'novalidate'}}) }}
+
+            {{ form_label(themeForm.name) }}
+            {{ form_widget(themeForm.name) }}
+            {{ form_errors(themeForm.name) }}
+
+            {{ form_label(themeForm.description) }}
+            {{ form_widget(themeForm.description) }}
+            {{ form_errors(themeForm.description) }}

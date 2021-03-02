@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des themes{% endblock %}
+
+
+{% block body %}
+    <div class="row"><!-- row-eq-height -->
+        <div class="col-md-4">
+            <div class="card d-block px-4 shadow">
+                <div class="text-center my-3">
+                    <img src="{{ asset('images/avatar.png') }}" alt="">
+                </div>
+                <h1 class="text-center colorRed mt-3 mb-4">{{ app.user.firstname }} {{ app.user.lastname }}</h1>
+                <p><i class="fas fa-envelope mr-4"></i>{{ app.user.email }}</p>
+                <p><i class="fas fa-phone-alt mr-4"></i>0782668932</p>
+                <p><i class="fas fa-briefcase mr-4"></i>Responsable de secteur</p>
+                <p><i class="fas fa-map-marked-alt mr-4"></i>Bordeaux</p>
+                <p><i class="fas fa-calendar-alt mr-4"></i>Depuis le {{ app.user.createdAt| date("j F \\à G\\h\\:i", "Europe/Paris") }}</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card d-block px-4 shadow">
+                <h1 class="text-center mt-3 mb-4">Citation</h1>
+                <p class="text-center">" Un seul être vous manque et tout es dépeuplé "</p>
+            </div>
+            <div class="card d-block px-4 shadow mt-4">
+                <h1 class="text-center mt-3 mb-4">Compétences</h1>
+                <p class="text-center">Commerciales & Managériales</p>
+                <p class="text-center">(Découverte client, argumentatin de vente, conclusion de vente, organisation, réunion, humain)</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card d-block px-4 shadow">
+                <canvas id="myChart"></canvas>
+                {% block javascripts %}
+                    {{ parent() }}
+                    <script src="{{ asset('js/graph.js') }}"></script>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card d-block px-4 shadow">
+                <h1 class="text-center mt-3 mb-4">Mes passions</h1>
+                <p class="text-center">Cinéma - Musique - Art africain</p>
+                <p class="text-center">La musique et le cinéma m'offrent l'évasion nécéssaire pour vancer chaque jour un peu plus dans un quotidien parfois si enxiogène, l'art africain me ramène à mes racines!</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card d-block px-4 shadow">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="text-left mt-3 mb-4"><strong>Histoires écrites</strong></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-right text-success mt-3 mb-4">42</p>
+                    </div>
+                </div>
+                <p class="text-center">Cinéma - Musique - Art africain</p>
+                <p>La musique et le cinéma m'offrent l'évasion nécéssaire pour vancer chaque jour un peu plus dans un quotidien parfois si enxiogène, l'art africain me ramène à mes racines!</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

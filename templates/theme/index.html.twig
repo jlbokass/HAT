@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des themes{% endblock %}
+
+{% block pageTitle %}Liste des thèmes{% endblock %}
+
+{% block searchbox %}
+    <div>
+        <a href="{{ path('add_theme') }}" class="btn rounded-pill btn-success mb-5 btn-block">Ajoutez un thème</a>
+    </div>
+{% endblock %}
+
+{% block body %}
+    {% if themes %}
+        {% for theme in themes %}
+            <div class="row mb-5">
+                <div class="col-md-4"><a href="{{ path('show_theme', {'id' : theme.id }) }}" class="btn btn-block rounded-pill shadow">{{ theme.name }}</a></div>
+                <div class="col-md-4"><a href="{{ path('edit_theme', {'id' : theme.id }) }}" class="btn btn-block rounded-pill btn-warning">Modifiez</a></div>
+                <div class="col-md-4"><button class="btn btn-block rounded-pill btn-danger">Supprimer</button></div>
+            </div>
+        {% endfor %}
+        {% else %}
+        <h3>Il n'y a pas encore de thème</h3>
+    {% endif %}
+{% endblock %}
+
+    {#<div class="container">
+        <h1 class="mb-5">Liste des thèmes</h1>
+
+        <div class="text-right mb-5">
+            <a href="{{ path('add_theme') }}" class="btn rounded-pill shadow btn-dark-blue" style="width: 250px">Ajoutez un thème</a>
+        </div>
+
+        {% if themes %}
+            {% for theme in themes %}
+                <div class="row mb-5">
+                    <div class="col-md-4"><a href="{{ path('show_theme', {'id' : theme.id}) }}" class="btn btn-block rounded-pill shadow">{{ theme.name }}</a></div>
+                    <div class="col-md-4"><button class="btn btn-block rounded-pill shadow">Modifiez</button></div>
+                    <div class="col-md-4"><button class="btn btn-block rounded-pill shadow">Supprimer</button></div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    </div>#}

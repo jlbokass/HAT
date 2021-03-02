@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\StoryRepository;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
 use phpDocumentor\Reflection\Types\Boolean;
@@ -37,7 +38,7 @@ class Story
     /**
      * @Assert\Length(
      *      min = 10,
-     *      max = 1150,
+     *      max = 10000,
      *      minMessage = "minimum {{ limit }} caractères",
      *      maxMessage = "maximum {{ limit }} caractère"
      * )
@@ -57,36 +58,32 @@ class Story
      */
     private $categories;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Theme", mappedBy="story", cascade={"persist", "remove"})
+     */
+    private  $themes;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $published;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
     public function __construct()
     {
         $this->createdAt = new DateTime('now');
         $this->published = false;
         $this->categories = new ArrayCollection();
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getCategories(): ArrayCollection
-    {
-        return $this->categories;
-    }
-
-    /**
-     * @param Category $category
-     */
-    public function addCategories(Category $category): void
-    {
-        $this->categories->add($category);
-        $category->setStory($this);
-    }
-
-    /**
-     * @param Category $category
-     */
-    public function removeCategory(Category $category): void
-    {
-        $this->categories->removeElement($category);
+        $this->themes = new ArrayCollection();
     }
 
     /**
@@ -106,15 +103,6 @@ class Story
     }
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    private $createdAt;
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $published;
-
-    /**
      * @return bool
      */
     public function getPublished(): Boolean
@@ -129,11 +117,6 @@ class Story
     {
         $this->published = $published;
     }
-
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -187,4 +170,55 @@ class Story
 
         return $this;
     }
+
+    /**
+     * @return Collection
+     */
+    public function getThemes(): Collection
+    {
+        return $this->themes;
+    }
+
+    /**
+     * @param Theme $theme
+     */
+    public function addTheme(Theme $theme): void
+    {
+        $this->themes->add($theme);
+        $theme->setStory($this);
+    }
+
+    /**
+     * @param Theme $theme
+     */
+    public function removeTheme(Theme $theme): void
+    {
+        $this->themes->removeElement($theme);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getCategories(): ArrayCollection
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @param Category $category
+     */
+    public function addCategories(Category $category): void
+    {
+        $this->categories->add($category);
+        $category->setStory($this);
+    }
+
+    /**
+     * @param Category $category
+     */
+    public function removeCategory(Category $category): void
+    {
+        $this->categories->removeElement($category);
+    }
+
 }

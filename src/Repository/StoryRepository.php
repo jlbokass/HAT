@@ -47,4 +47,13 @@ class StoryRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findAllOrderedByNewest()
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

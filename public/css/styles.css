@@ -1,10 +1,71 @@
+@import "base/_global.css";
+@import "base/_color.css";
+@import "modules/_btn.css";
+@import "modules/_form.css";
+@import "modules/_links.css";
+@import "modules/_file-upload.css";
 
-.storyPicture {
-    width: 500px;
-    height: 300px;
+
+.textLightGrey a {
+    color: var(--main-lightGrey-color);
+    text-decoration: none;
 }
 
-img {
-    width: 400px;
+
+
+.textSmall {
+    font-size: 16px;
+}
+
+.emotion i{
+    font-size: 80px;
+    color: var(--main-darkBlue-color);
+}
+
+a.border-light-grey {
+    border: 1px solid var(--main-lightGrey-color);
+}
+
+a.border-red {
+    border: 1px solid var(--main-red-color);
+}
+
+
+
+.container {
+    margin-top: 75px;
+    margin-bottom: 150px;
+}
+
+.myLogin a {
+    color: var(--main-red-color);
+    text-decoration: none;
+}
+
+.article-container image, .article-container img {
+    width: 700px;
     height: auto;
+}
+
+
+div.article-container {
+    display: block;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 75px;
+}
+
+.search-box {
+    font-size: 15px;
+}
+
+
+footer a {
+    color: #FFFFFF;
+}
+
+footer a:hover {
+    color: #FFFFFF;
+    text-decoration: none;
 }

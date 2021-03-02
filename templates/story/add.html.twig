@@ -2,14 +2,25 @@
 
 {% block title %}Add a story{% endblock %}
 
+{% block pageTitle %} Ajoutez une histoire {% endblock %}
+
+{% block searchbox %}
+    <div class="row justify-content-center">
+        <div class="col-md-4"><a href="#" class="btn btnWhite btn-block rounded-pill shadow">Brouillons</a></div>
+        <div class="col-md-4"><a href="#" class="btn btnWhite btn-block rounded-pill shadow">Histoires publiés</a></div>
+    </div>
+{% endblock %}
+
 {% block body %}
 
-    <div class="example-wrapper">
-        <h1>Ajouter une histoire</h1>
+        <div class="article-container">
+            {% include 'story/story_form.html.twig' %}
 
-        {% include 'story/story_form.html.twig' %}
-
-        <button type="submit" name="action">Partager mon histoire</button>
-        {{ form_end(storyForm) }}
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-5"><button class="btn rounded-pill btnWhite btn-block shadow" type="submit">Enregistrez comme brouillon</button></div>
+                <div class="col-md-5"><button class="btn rounded-pill btnDarkBlue btn-block" type="submit">Partager mon histoire</button></div>
+            </div>
+            {{ form_end(storyForm) }}
+        </div>
     </div>
 {% endblock %}

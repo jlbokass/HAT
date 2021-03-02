@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des catégories{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Liste des catégories</h1>
+
+    <div><a href="{{ path('add_category') }}">Ajoutez une catégorie</a></div>
+
+    {% if categories %}
+        {% for category in categories %}
+            <div>
+                <h3><a href="#">{{ category.name }}</a></h3>
+                <p>{{ category.description }}</p>
+                <p><a href="#">Modifier la categorie</a></p>
+            </div>
+        {% endfor %}
+
+        {% else %}
+            <h3>Pas de category</h3>
+    {% endif %}
+
+</div>
+{% endblock %}
