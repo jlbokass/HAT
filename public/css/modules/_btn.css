@@ -1,32 +1,32 @@
 /* BTN DARK BLUE */
-.btnDarkBlue {
+.btn-dark-blue {
     background-color: var(--main-darkBlue-color);
     color: #FFF;
     transition: .4s;
 }
-.btnDarkBlue:hover {
+.btn-dark-blue:hover {
     background-color: rgb(77, 93, 128);
     color: #FFF;
 }
 
 /* BTN WHITE */
-.btnWhite {
+.btn-white {
     background-color: #FFF;
     color: var(--main-lightGrey-color);
     transition: .4s;
 }
-.btnWhite:hover {
+.btn-white:hover {
     background-color: rgb(77, 93, 128);
     color: #FFF;
 }
 
 /* BTN RED */
-.btnRed {
+.btn-red {
     background-color: var(--main-red-color);
     color: #FFF;
     transition: .4s;
 }
-.btnRed:hover {
+.btn-red:hover {
     background-color: red;
     color: #FFF;
 }

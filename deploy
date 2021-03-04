@@ -1,0 +1,2 @@
+#!/bin/sh
+rsync -av ./ boje1845@109.234.161.53:~/gedimat.2-for-you.fr --include=vendor --exclude-from=.gitignore

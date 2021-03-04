@@ -28,8 +28,8 @@ class RegistrationType extends AbstractType
                 'type' => PasswordType::class,
                     'invalid_message' => 'Les mots de passes doivent être identiques',
                     'required' => true,
-                    'first_options' => ['label' => 'Mot de passe'],
-                    'second_options' => ['label' => 'Répéter le mot de passe']
+                    'first_options' => ['label' => 'Mot de passe', 'attr' => ['class' => 'rounded-pill']],
+                    'second_options' => ['label' => 'Répéter le mot de passe', 'attr' => ['class' => 'rounded-pill']],
             ])
         ;
     }

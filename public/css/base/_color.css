@@ -7,47 +7,47 @@
 }
 
 /* BG COLOR */
-.bgDark-blue {
+.bg-dark-blue {
     background-color: var(--main-darkBlue-color);
 }
 
-.bgRed {
+.bg-red {
     background-color: var(--main-red-color);
 }
 
-.bgBlueOcean {
+.bg-blue-ocean {
     background-color: var(--main-blueOcean-color);
 }
 
-.bgPurple {
+.bg-purple {
     background-color: var(--main-purple-color);
 }
 
-.bgLightGrey {
+.bg--light-grey {
     background-color: var(--main-lightGrey-color);
 }
 
 /* TEXT COLOR */
-.textDarkBlue {
+.text-dark-blue {
     color: var(--main-darkBlue-color);
 }
 
-.textRed {
+.text-red {
     color: var(--main-red-color);
 }
 
-.textBlueOcean {
+.text-blue-ocean {
     color: var(--main-blueOcean-color);
 }
 
-.textPurple {
+.text-purple {
     color: var(--main-purple-color);
 }
 
-.textLightGrey {
+.text-light-grey {
     color: var(--main-lightGrey-color);
 }
 
-.textWhite {
+.text-white {
     color: #FFF;
 }
