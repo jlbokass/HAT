@@ -93,7 +93,8 @@
         {% endfor %}
     {% endfor %}
 
-    <p class="textDarkBlue"><strong> <a class="blueLink" href="{{ path('home_story') }}"> Accueil</a> < {% block pageTitle %}{% endblock %}</strong></p>
+    <h3 class="textDarkBlue">{% block pageTitle %}{% endblock %}</h3>
+
     <p>{% block subtitle %}{% endblock %}</p>
     <div class="search-box">
         {% block searchbox %}{% endblock %}

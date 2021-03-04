@@ -13,22 +13,38 @@
         <div class="col-md-6">
             <h1>S'inscrire</h1>
 
-            {{ form_start(registrationUserForm) }}
+            {{ form_start(registrationUserForm,{'attr': {'novalidate': 'novalidate'}}) }}
 
             {{ form_label(registrationUserForm.firstname) }}
-            {{ form_widget(registrationUserForm.firstname) }}
+            {{ form_widget(registrationUserForm.firstname , {'attr':
+                {
+                    'class' : 'rounded-pill'
+                }
+            }) }}
             {{ form_errors(registrationUserForm.firstname) }}
 
             {{ form_label(registrationUserForm.lastname) }}
-            {{ form_widget(registrationUserForm.lastname) }}
+            {{ form_widget(registrationUserForm.lastname, {'attr':
+                {
+                    'class' : 'rounded-pill'
+                }
+            }) }}
             {{ form_errors(registrationUserForm.lastname) }}
 
             {{ form_label(registrationUserForm.email) }}
-            {{ form_widget(registrationUserForm.email) }}
+            {{ form_widget(registrationUserForm.email, {'attr':
+                {
+                    'class' : 'rounded-pill'
+                }
+            }) }}
             {{ form_errors(registrationUserForm.email) }}
 
             {{ form_label(registrationUserForm.password) }}
-            {{ form_widget(registrationUserForm.password) }}
+            {{ form_widget(registrationUserForm.password, {'attr':
+                {
+                    'class' : 'rounded-pill'
+                }
+            }) }}
             {{ form_errors(registrationUserForm.password) }}
 
             <div class="text-center">
